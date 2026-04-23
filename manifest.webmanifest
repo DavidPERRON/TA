@@ -1,0 +1,8 @@
+{
+  "name": "Tyramine × Nardil",
+  "short_name": "Nardil",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#071028",
+  "theme_color": "#071028"
+}

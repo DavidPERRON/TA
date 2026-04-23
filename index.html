@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071028">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tyramine × Nardil">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Tyramine × Nardil — V12</title>
+<style>
+:root{--bg:#071028;--bg2:#0b1532;--card:#111c3e;--text:#eef3ff;--muted:#a8b8de;--border:#273868;--gold:#d8b055}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:16px 14px 40px}
+h1{margin:0 0 6px;font-size:28px;line-height:1.05}
+.sub{font-size:14px;line-height:1.45;color:var(--muted);margin-bottom:14px}
+.card{background:rgba(17,28,62,.96);border:1px solid var(--border);border-radius:20px;padding:14px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:760px){.grid-2{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:13px;color:#dce5ff;margin-bottom:6px}
+select,input{width:100%;padding:13px 12px;border-radius:14px;border:1px solid var(--border);background:#0a1430;color:var(--text);font-size:16px;outline:none}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:10px 12px;border-radius:999px;border:1px solid var(--border);background:#0c1634;color:var(--text);font-size:14px;cursor:pointer}
+.tab.active{background:#16244b;border-color:#3b4f86}
+.section{display:none}.section.active{display:block}
+.heroDecision{padding:14px;border-radius:18px;font-size:18px;font-weight:700}
+.lowBox{background:rgba(46,125,50,.18);border:1px solid rgba(46,125,50,.35);color:#b8f2bf}
+.modBox{background:rgba(185,134,17,.18);border:1px solid rgba(185,134,17,.35);color:#ffe29a}
+.highBox{background:rgba(201,106,34,.18);border:1px solid rgba(201,106,34,.35);color:#ffd3a9}
+.critBox{background:rgba(183,28,28,.18);border:1px solid rgba(183,28,28,.35);color:#ffb5b5}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.badge{display:inline-block;padding:8px 11px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.15);background:#162449}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:760px){.metrics{grid-template-columns:repeat(5,1fr)}}
+.metric{background:#0c1634;border:1px solid var(--border);border-radius:16px;padding:12px}.metric .k{font-size:12px;color:var(--muted);margin-bottom:5px}.metric .v{font-size:22px;font-weight:700}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+.btn{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#0c1634;color:var(--text);font-size:14px;cursor:pointer}
+.mealbox{border:1px solid var(--border);border-radius:16px;padding:12px;background:#101b3a}
+.mealrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mealchip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:#162449;border:1px solid var(--border);font-size:12px;margin:4px 6px 0 0}
+.mealchip button{border:0;background:transparent;color:#ffd1d1;font-size:14px;line-height:1;cursor:pointer}
+.alert{background:#1a2548;border:1px solid #5c2a2a;color:#ffd1d1;border-radius:14px;padding:10px 12px;font-size:13px;line-height:1.4;margin-bottom:8px}
+.infoCard{background:#132148;border:1px solid #30457a;color:#dbe8ff;border-radius:14px;padding:10px 12px;font-size:13px;line-height:1.4;margin-bottom:8px}
+#chart svg,#dayChart svg{display:block;width:100%;height:auto}
+hr.sep{border:0;border-top:1px solid var(--border);margin:14px 0}
+.refgroup{border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:10px}
+.refhead{padding:12px 14px;background:#0c1634;font-weight:700;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.refbody{display:none;padding:10px 14px;background:#101b3a}.refbody.open{display:block}
+.refitem{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}.refitem:last-child{border-bottom:0}
+.state-note{color:var(--muted);font-size:12px}
+.portionGrid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:760px){.portionGrid{grid-template-columns:repeat(3,1fr)}}
+.portionCard{background:#101b3a;border:1px solid var(--border);border-radius:16px;padding:14px;text-align:left;color:var(--text);cursor:pointer}
+.portionCard.selected{border-color:var(--gold);box-shadow:0 0 0 1px rgba(216,176,85,.35) inset}
+.portionCard.featured{background:linear-gradient(180deg, rgba(216,176,85,.10), rgba(16,27,58,.96))}
+.portionTitle{font-weight:700;margin-bottom:6px}
+.portionRange{font-size:20px;font-weight:700;margin-bottom:6px}
+.portionExample{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.4}
+.portionScore{font-size:12px;padding:8px 10px;border-radius:999px;display:inline-block}
+.portionScore.low{background:rgba(46,125,50,.18);color:#b8f2bf}
+.portionScore.mod{background:rgba(185,134,17,.18);color:#ffe29a}
+.portionScore.high{background:rgba(201,106,34,.18);color:#ffd3a9}
+.portionScore.crit{background:rgba(183,28,28,.18);color:#ffb5b5}
+.tag{display:inline-block;font-size:11px;padding:3px 7px;border-radius:999px;background:rgba(216,176,85,.15);border:1px solid rgba(216,176,85,.4);color:#f1d89b}
+.infoBtn{margin-left:6px;width:20px;height:20px;border-radius:50%;border:1px solid #4a5d94;background:#16244b;color:#eef3ff;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9998}
+.modal{display:none;position:fixed;left:16px;right:16px;top:10%;max-width:760px;margin:0 auto;background:#0f1833;border:1px solid #273868;border-radius:14px;padding:16px;z-index:9999}
+.closeBtn{margin-top:12px;padding:10px 12px;border-radius:10px;border:1px solid #273868;background:#0a1430;color:#eef3ff;cursor:pointer}
+.historyItem{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+table{width:100%;border-collapse:collapse;font-size:12px} th,td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top} th{text-align:left}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Tyramine × Nardil</h1>
+  <div class="sub">Version complète, autonome et stable : repas complet, portions comparées, score live, journée, historique, alertes, PWA.</div>
+
+  <div class="card">
+    <div class="tabs">
+      <button id="tabbtn-main" class="tab active" onclick="switchTab('main')">Décision</button>
+      <button id="tabbtn-day" class="tab" onclick="switchTab('day')">Journée</button>
+      <button id="tabbtn-history" class="tab" onclick="switchTab('history')">Historique</button>
+      <button id="tabbtn-params" class="tab" onclick="switchTab('params')">Paramètres</button>
+      <button id="tabbtn-ref" class="tab" onclick="switchTab('ref')">Référence</button>
+    </div>
+  </div>
+
+  <section id="tab-main" class="section active">
+    <div class="card">
+      <div class="grid grid-2">
+        <div><label>Catégorie</label><select id="category"></select></div>
+        <div><label>Aliment</label><select id="food"></select></div>
+        <div><label>État du produit</label><select id="state"></select></div>
+        <div><label>Situation</label><select id="scenario"><option>Maison</option><option>Restaurant</option><option>Apéritif</option><option>Snack</option></select></div>
+        <div><label>Rester en risque faible</label><select id="stayLow"><option>Non</option><option>Oui</option></select></div>
+      </div>
+      <div id="stateHint" class="state-note" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px">
+        <div style="font-weight:700">Choix de portion</div>
+        <button id="portionInfoBtn" class="infoBtn" type="button">i</button>
+      </div>
+      <div id="portionCards" class="portionGrid"></div>
+      <div id="portionInfo" class="state-note" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:8px">Repas courant</div>
+      <div class="mealbox">
+        <div class="mealrow">
+          <button class="btn" onclick="addCurrentFoodToMeal()">Ajouter ce produit au repas</button>
+          <button class="btn" onclick="clearMeal()">Vider le repas courant</button>
+        </div>
+        <div id="mealItems" style="margin-top:10px"></div>
+        <div class="small">Le calcul s’applique au produit affiché si le repas courant est vide. Sinon, il s’applique à l’ensemble du repas.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="decisionHero" class="heroDecision modBox">Tolérable avec prudence dans ce scénario.</div>
+      <div class="badges">
+        <span id="foodColor" class="badge">—</span>
+        <span id="confidence" class="badge">—</span>
+        <span id="riskBadge" class="badge">—</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="metrics">
+        <div class="metric"><div class="k">Équivalent tyramine estimé</div><div class="v" id="tyrEqOut">0 mg</div></div>
+        <div class="metric"><div class="k">Charge ajustée</div><div class="v" id="chargeOut">0</div></div>
+        <div class="metric"><div class="k">Pic</div><div class="v" id="peakOut">0</div></div>
+        <div class="metric"><div class="k">Fenêtre critique</div><div class="v" id="windowOut">0–0 h</div></div>
+        <div class="metric"><div class="k">Évacuation approximative à partir de</div><div class="v" id="clearanceOut">0 h</div></div>
+      </div>
+    </div>
+
+    <div class="card"><div id="chart"></div></div>
+
+    <div class="card">
+      <div class="grid grid-2">
+        <div><div style="font-weight:700;margin-bottom:10px">Lecture patient</div><div id="infoBox"></div></div>
+        <div><div style="font-weight:700;margin-bottom:10px">Alertes intelligentes</div><div id="alertsBox"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-day" class="section">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px">Journée</div>
+      <div class="mealrow">
+        <label style="margin:0;min-width:140px">Heure du repas</label>
+        <input id="mealTime" type="time" value="12:30" style="max-width:160px">
+        <button class="btn" onclick="addMealToDay()">Ajouter ce repas à la journée</button>
+        <button class="btn" onclick="clearDay()">Effacer la journée</button>
+      </div>
+      <div class="small" style="margin-top:10px">Chaque repas enregistré garde ses produits, son heure et sa courbe. Les effets se superposent si les repas sont rapprochés.</div>
+      <hr class="sep">
+      <div class="metrics">
+        <div class="metric"><div class="k">Repas enregistrés</div><div class="v" id="dayCount">0</div></div>
+        <div class="metric"><div class="k">Charge cumulée</div><div class="v" id="dayCharge">0</div></div>
+        <div class="metric"><div class="k">Pic max observé</div><div class="v" id="dayPeak">0</div></div>
+        <div class="metric"><div class="k">Alerte journée</div><div class="v" id="dayLevel">—</div></div>
+      </div>
+      <hr class="sep">
+      <div id="dayChart"></div>
+      <div class="small" style="margin-top:10px">Courbes fines : repas individuels. Courbe dorée : cumul de la journée.</div>
+      <hr class="sep">
+      <div id="dayAlerts"></div>
+      <div style="overflow:auto;margin-top:12px">
+        <table>
+          <thead><tr><th>Heure</th><th>Repas</th><th>Situation</th><th>Charge</th><th>Risque</th></tr></thead>
+          <tbody id="dayTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-history" class="section">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px">Historique et apprentissages</div>
+      <div id="learningBox"></div>
+      <hr class="sep">
+      <div id="historyBox"></div>
+    </div>
+  </section>
+
+  <section id="tab-params" class="section">
+    <div class="card">
+      <div class="grid grid-2">
+        <div><label>Statut Nardil</label><select id="status"><option>Non traité</option><option>Début (&lt; 7 jours)</option><option selected>Stabilisé (≥ 2 semaines)</option><option>Arrêt récent (&lt; 14 jours)</option></select></div>
+        <div><label>Dose quotidienne Nardil</label><select id="dose"><option>15 mg/j</option><option>30 mg/j</option><option selected>45 mg/j</option><option>60 mg/j</option><option>75 mg/j</option><option>90 mg/j</option></select></div>
+        <div><label>Profil utilisateur</label><select id="profile"><option>Standard</option><option>Hypertendu / sensible</option><option>Très sensible</option></select></div>
+        <div><label>Intervalle entre repas</label><select id="interval"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>8</option></select></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-ref" class="section">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px">Base produits</div>
+      <div id="refGroups"></div>
+    </div>
+  </section>
+</div>
+
+<div id="infoOverlay" class="overlay"></div>
+<div id="infoBox" class="modal">
+  <h3>Rationnel des portions</h3>
+  <p>La portion reste une variable universelle : petite, normale, importante.</p>
+  <p>Le bracket de grammage ou de volume affiché dépend du produit sélectionné.</p>
+  <p>La carte “normale” est mise en avant comme portion de référence pour la comparaison.</p>
+  <button id="closeInfoBtn" class="closeBtn" type="button">Fermer</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
