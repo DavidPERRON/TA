@@ -1,0 +1,46 @@
+{
+  "version": "2026-04-23-rebuild",
+  "source_file": "document_maitre_tyramine_nardil_v4.xlsx",
+  "food_count": 338,
+  "confidence_counts": {
+    "B": 92,
+    "C": 134,
+    "A": 36,
+    "D": 76
+  },
+  "family_counts": {
+    "Fromages": 59,
+    "Produits laitiers": 15,
+    "Viandes": 5,
+    "Poissons / fruits de mer": 44,
+    "Charcuteries / viandes affinées": 52,
+    "Boissons fermentées": 12,
+    "Légumes / fermentés": 22,
+    "Soja / légumineuses fermentés": 28,
+    "Sauces / condiments": 25,
+    "Levures / extraits": 7,
+    "Boissons alcoolisées": 50,
+    "Fruits": 15,
+    "Fèves / légumineuses": 4
+  },
+  "cuisine_type_counts": {
+    "Global / international": 90,
+    "Russie / Europe de l'Est": 34,
+    "France / francophone": 30,
+    "Royaume-Uni / Irlande": 9,
+    "Italie": 25,
+    "Japon": 22,
+    "Asie du Sud-Est": 21,
+    "Méditerranée": 10,
+    "Corée": 18,
+    "Chine / Taïwan": 10,
+    "Moyen-Orient / Maghreb": 9,
+    "Allemagne / Suisse": 9,
+    "Espagne": 13,
+    "Amériques": 16,
+    "Inde": 9,
+    "Afrique": 7,
+    "Asie": 3,
+    "Nordique": 3
+  }
+}

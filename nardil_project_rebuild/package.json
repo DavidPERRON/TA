@@ -1,0 +1,11 @@
+{
+  "name": "nardil-tyramine-rebuild",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Nardil tyramine calculator rebuilt from workbook v4",
+  "scripts": {
+    "test:data-integrity": "node tests/test_data_integrity.mjs",
+    "test:unit": "node tests/test_unit_engine.mjs",
+    "test": "npm run test:data-integrity && npm run test:unit"
+  }
+}

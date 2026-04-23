@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071028">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nardil × Tyramine">
+  <title>Nardil × Tyramine — Refonte</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="eyebrow" id="brand-eyebrow"></div>
+        <h1 id="app-title"></h1>
+        <p class="subtitle" id="app-subtitle"></p>
+      </div>
+      <div class="topbar-actions">
+        <label class="lang-select-wrap">
+          <span id="lang-label" class="mini-label"></span>
+          <select id="language-select" aria-label="Language selector"></select>
+        </label>
+      </div>
+    </header>
+
+    <div class="global-banner" id="scope-banner"></div>
+
+    <nav class="page-tabs" id="page-tabs"></nav>
+
+    <main>
+      <section id="page-build" class="page active"></section>
+      <section id="page-info" class="page"></section>
+      <section id="page-more" class="page"></section>
+    </main>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h3 id="modal-title"></h3>
+      <button class="icon-button" id="modal-close" aria-label="Close">×</button>
+    </div>
+    <div id="modal-body" class="modal-body"></div>
+  </div>
+
+  <script src="data/nardil_master.generated.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
